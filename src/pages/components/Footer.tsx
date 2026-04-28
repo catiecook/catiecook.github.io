@@ -122,14 +122,14 @@ const Footer: React.FC = () => {
       <Right>
         <SocialLinks>
           <SocialLink
-            href="https://linkedin.com"
+            href="https://linkedin.com/in/catiecook"
             target="_blank"
             rel="noopener noreferrer"
           >
             LinkedIn
           </SocialLink>
           <SocialLink
-            href="https://github.com"
+            href="https://github.com/catiecook"
             target="_blank"
             rel="noopener noreferrer"
           >
