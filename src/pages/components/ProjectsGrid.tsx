@@ -1,4 +1,4 @@
-import { Card, Col, Flex, Row, Typography } from "antd";
+import { Col, Row, Typography } from "antd";
 import styled from "styled-components";
 
 const { Title } = Typography;

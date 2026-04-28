@@ -83,29 +83,6 @@ const SecondaryLink = styled.a`
     border-color: var(--accent);
   }
 `;
-
-const ScrollIndicator = styled.div`
-  position: absolute;
-  bottom: 2.5rem;
-  left: 3rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gray);
-
-  &::before {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 1px;
-    background-color: var(--gray);
-  }
-`;
-
 const Wrapper = styled.div`
   position: relative;
 `;

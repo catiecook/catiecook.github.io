@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import styled, { keyframes, css } from 'styled-components';
+import React, { useEffect, useRef, useState } from "react";
+import styled, { keyframes, css } from "styled-components";
 
 /* ── Count-up hook ── */
 function useCountUp(target: number, duration = 1400, active = false) {
@@ -48,7 +48,7 @@ const SectionLabel = styled.span`
 `;
 
 const SectionTitle = styled.h2`
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   color: var(--cream);
@@ -81,7 +81,7 @@ const MetricCell = styled.div`
 `;
 
 const MetricValue = styled.div`
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: clamp(2.8rem, 5vw, 4rem);
   font-weight: 700;
   color: var(--accent);
@@ -110,82 +110,6 @@ const MetricSource = styled.p`
   font-style: italic;
 `;
 
-/* ── Featured before/after visualization ── */
-const Featured = styled.div`
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 3rem;
-`;
-
-const FeaturedLabel = styled.p`
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
-`;
-
-const FeaturedTitle = styled.h3`
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-  font-weight: 400;
-  color: var(--cream);
-  margin-bottom: 2.5rem;
-
-  em {
-    font-style: italic;
-    color: var(--accent);
-  }
-`;
-
-const BarRow = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-`;
-
-const BarItem = styled.div``;
-
-const BarMeta = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0.5rem;
-`;
-
-const BarMetaLabel = styled.span`
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.55);
-`;
-
-const BarMetaValue = styled.span`
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--cream);
-`;
-
-const BarTrack = styled.div`
-  width: 100%;
-  height: 6px;
-  background-color: rgba(255, 255, 255, 0.08);
-  border-radius: 3px;
-  overflow: hidden;
-`;
-
-const BarFill = styled.div<{ $pct: number; $active: boolean; $delay?: number }>`
-  height: 100%;
-  border-radius: 3px;
-  background-color: var(--accent);
-  width: 0%;
-
-  ${({ $active, $pct, $delay = 0 }) =>
-    $active &&
-    css`animation: ${fillBar($pct)} 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${$delay}ms forwards;`}
-`;
-
 /* ── Data ── */
 interface Metric {
   value: number;
@@ -195,23 +119,56 @@ interface Metric {
 }
 
 const metrics: Metric[] = [
-  { value: 86,  suffix: '%', label: 'Onboarding conversion rate',      source: 'FairComp — was 10%' },
-  { value: 45,  suffix: '%', label: 'Feature utilization lift',         source: 'FairComp' },
-  { value: 75,  suffix: '%', label: 'Deployment time reduced',          source: 'Amazon / AWS' },
-  { value: 35,  suffix: '%', label: 'Project creation growth',          source: 'Continuum' },
-  { value: 27,  suffix: '%', label: 'Transaction volume lift',          source: 'Continuum' },
-  { value: 1,   suffix: 'M+', label: 'Organic video views, $0 ad spend', source: 'FairComp' },
+  {
+    value: 86,
+    suffix: "%",
+    label: "Onboarding conversion rate",
+    source: "FairComp — was 10%",
+  },
+  {
+    value: 45,
+    suffix: "%",
+    label: "Feature utilization lift",
+    source: "FairComp",
+  },
+  {
+    value: 75,
+    suffix: "%",
+    label: "Deployment time reduced",
+    source: "Amazon / AWS",
+  },
+  {
+    value: 35,
+    suffix: "%",
+    label: "Project creation growth",
+    source: "Continuum",
+  },
+  {
+    value: 27,
+    suffix: "%",
+    label: "Transaction volume lift",
+    source: "Continuum",
+  },
+  {
+    value: 1,
+    suffix: "M+",
+    label: "Organic video views, $0 ad spend",
+    source: "FairComp",
+  },
 ];
 
 const beforeAfterBars = [
-  { label: 'Before: signup conversion', pct: 10,  display: '10%',  delay: 0 },
-  { label: 'After: signup conversion',  pct: 86,  display: '86%',  delay: 200 },
-  { label: 'Feature utilization lift',  pct: 45,  display: '+45%', delay: 400 },
-  { label: 'Deployment time saved',     pct: 75,  display: '75%',  delay: 600 },
+  { label: "Before: signup conversion", pct: 10, display: "10%", delay: 0 },
+  { label: "After: signup conversion", pct: 86, display: "86%", delay: 200 },
+  { label: "Feature utilization lift", pct: 45, display: "+45%", delay: 400 },
+  { label: "Deployment time saved", pct: 75, display: "75%", delay: 600 },
 ];
 
 /* ── Single animated metric ── */
-const AnimatedMetric: React.FC<{ metric: Metric; active: boolean }> = ({ metric, active }) => {
+const AnimatedMetric: React.FC<{ metric: Metric; active: boolean }> = ({
+  metric,
+  active,
+}) => {
   const count = useCountUp(metric.value, 1400, active);
   return (
     <MetricCell>
@@ -256,7 +213,6 @@ const Metrics: React.FC = () => {
           <AnimatedMetric key={m.label} metric={m} active={active} />
         ))}
       </Grid>
-
     </Section>
   );
 };

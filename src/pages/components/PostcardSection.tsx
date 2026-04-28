@@ -147,24 +147,6 @@ const MeetButton = styled.a`
   }
 `;
 
-/* ── Decorative ombre photo panel ── */
-const PhotoPanel = styled.div`
-  position: absolute;
-  left: 5%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 400px;
-  border: 6px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 6px 10px 30px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(170deg, #bcb4ff 0%, #d8d4ff 50%, #141414 100%);
-  z-index: 1;
-
-  @media (max-width: 900px) {
-    display: none;
-  }
-`;
-
 const PostcardSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
@@ -185,7 +167,6 @@ const PostcardSection: React.FC = () => {
 
   return (
     <Section ref={sectionRef}>
-      {/* <PhotoPanel /> */}
       <Card $visible={visible}>
         <StampCorner>
           <StampLines />
